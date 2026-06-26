@@ -1,1 +1,51 @@
 @import "tailwindcss";
+
+/* 3D Styles & Effects */
+.card-3d-container {
+  perspective: 1200px;
+}
+
+.card-3d-element {
+  transform-style: preserve-3d;
+  transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+
+/* Translate child elements forward to create parallax depth */
+.card-3d-depth {
+  transform: translateZ(25px);
+}
+
+.card-3d-depth-high {
+  transform: translateZ(45px);
+}
+
+.card-3d-depth-flat {
+  transform: translateZ(10px);
+}
+
+/* Custom glow overrides for 3D card highlights */
+.glow-indigo:hover {
+  box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15), 0 0 25px rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.45) !important;
+}
+
+.glow-emerald:hover {
+  box-shadow: 0 15px 35px rgba(16, 185, 129, 0.15), 0 0 25px rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.45) !important;
+}
+
+.glow-rose:hover {
+  box-shadow: 0 15px 35px rgba(239, 68, 68, 0.15), 0 0 25px rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.45) !important;
+}
+
+/* Subtly pulse background radial gradient for 3D depth */
+@keyframes bgGlowPulse {
+  0%, 100% { transform: scale(1); opacity: 0.12; }
+  50% { transform: scale(1.1); opacity: 0.18; }
+}
+
+.animate-glow-pulse {
+  animation: bgGlowPulse 8s ease-in-out infinite;
+}
